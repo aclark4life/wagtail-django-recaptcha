@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import wagtail
 from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV3
 
 if wagtail.VERSION >= (2, 0):
     from wagtail.contrib.forms.forms import FormBuilder
@@ -16,7 +17,7 @@ class WagtailCaptchaFormBuilder(FormBuilder):
     def formfields(self):
         # Add wagtailcaptcha to formfields property
         fields = super(WagtailCaptchaFormBuilder, self).formfields
-        fields[self.CAPTCHA_FIELD_NAME] = ReCaptchaField(label='')
+        fields[self.CAPTCHA_FIELD_NAME] = ReCaptchaField(widget=ReCaptchaV3(required_score=0.85))
 
         return fields
 
