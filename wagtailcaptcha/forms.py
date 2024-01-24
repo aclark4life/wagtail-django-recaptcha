@@ -17,7 +17,7 @@ class WagtailCaptchaFormBuilder(FormBuilder):
     def formfields(self):
         # Add wagtailcaptcha to formfields property
         fields = super(WagtailCaptchaFormBuilder, self).formfields
-        fields[self.CAPTCHA_FIELD_NAME] = ReCaptchaField(widget=ReCaptchaV3(required_score=0.85))
+        fields[self.CAPTCHA_FIELD_NAME] = ReCaptchaField(widget=ReCaptchaV3())
 
         return fields
 
